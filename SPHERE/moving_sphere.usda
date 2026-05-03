@@ -1,0 +1,26 @@
+#usda 1.0
+(
+    endTimeCode = 48
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+)
+
+def "World"
+{
+    def Sphere "Sphere"
+    {
+        double radius = 1
+        float3 xformOp:scale.timeSamples = {
+            0: (1, 1, 1),
+            24: (1.5, 1.5, 1.5),
+            48: (1, 1, 1),
+        }
+        double3 xformOp:translate.timeSamples = {
+            0: (0, 0, 0),
+            24: (0, 5, 0),
+            48: (0, 0, 0),
+        }
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+}
+
